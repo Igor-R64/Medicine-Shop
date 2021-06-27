@@ -9,6 +9,7 @@ import {
   NavLink,
   NavbarText
 } from 'reactstrap';
+import { FcBiomass, FcBusinessman } from "react-icons/fc";
 
 const Example = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ const Example = (props) => {
 
       <Navbar className="d-flex " color="info" light expand="md">
           <div className="d-flex container-fluid">
-            <NavbarBrand className="offset-md-1 text-danger"  href="/">Medicine SHOP</NavbarBrand>  
+            <NavbarBrand className="offset-md-1 text-success"  href="/">Medicine SHOP <FcBiomass/> </NavbarBrand>  
          
         
 
@@ -33,7 +34,7 @@ const Example = (props) => {
               <NavLink href="/reactstrap">Пока не знаю</NavLink>
             </NavItem>
           </Nav>
-          <NavbarText className="offset-md-2">Разработано c божьей помощью и Александром </NavbarText>
+          <NavbarText className="offset-md-2">Разработано c божьей помощью и Александром <FcBusinessman/> </NavbarText>
         </Collapse>
         </div>
       </Navbar>

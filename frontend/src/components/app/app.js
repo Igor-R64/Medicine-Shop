@@ -34,9 +34,9 @@ export default class App extends Component {
 
     <Col sm="10" className="d-flex flex-wrap justify-content-around">
      
-      {/* <CardProduct/> */}
+      <CardProduct/>
       {/* <HomePage/> */}
-      <MapBasics/>
+      {/* <MapBasics/> */}
     </Col>
       </Row>
     </Container>
