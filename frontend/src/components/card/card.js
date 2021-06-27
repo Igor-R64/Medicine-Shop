@@ -1,22 +1,44 @@
-import React, {Component} from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+// import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Col } from 'reactstrap';
 
 
-export default class CardProduct extends Component {
-   
-    render() {
-        return ( 
-        <>
-      <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
-        <CardBody>
-          <CardTitle tag="h5">Card title</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          <Button>Button</Button>
-        </CardBody>
-      </Card>
-     </>
-        );
-    }
-}
+function CardProduct () {
+
+  const [product, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/goods')
+      .then(res => res.json())
+      .then((result) => setItems(result))
+  }, [])
+  
+ 
+    return (
+      <ul>
+        {product.map((item) => (
+          <li key={item.id}>
+            {item.type} {item.title}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+    
+export default CardProduct;
+
+      //   <Col sm="4" className="p-4">
+      // <Card>
+      // <CardImg  top width="100%" src="" alt="Card image cap" />
+      // <CardBody>
+      //     <CardTitle tag="h5">Название</CardTitle>
+      //     <CardSubtitle tag="h6" className="mb-2 text-muted">Группа товаров</CardSubtitle>
+      //     <CardText>Описание</CardText>
+      //     <CardSubtitle tag="h6" className="mb-2 text-muted">Цена</CardSubtitle>
+      //     <Button>Купить</Button>
+      //   </CardBody>
+      // </Card>
+      // </Col>
+          
+    
+
+  

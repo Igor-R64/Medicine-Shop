@@ -7,7 +7,7 @@ export default class Navigation extends Component {
         return ( 
             <div>
             <hr />
-            <Nav vertical>
+            <Nav vertical >
               <NavItem>
                 <NavLink href="#">Главная</NavLink>
               </NavItem>
@@ -18,7 +18,7 @@ export default class Navigation extends Component {
                 <NavLink href="#">Корзина</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink disabled href="#">Контакты</NavLink>
+                <NavLink  href="#">Контакты</NavLink>
               </NavItem>
             </Nav>
             <hr />
