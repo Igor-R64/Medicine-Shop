@@ -6,6 +6,7 @@ import { FaRubleSign } from 'react-icons/fa';
 function CardProduct () {
 
   const [product, setItems] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     fetch('/api/goods')
@@ -25,7 +26,8 @@ function CardProduct () {
           <CardSubtitle tag="h6" className="mb-2 text-muted">{item.type}</CardSubtitle>
           <CardText>{item.description}</CardText>
           <CardSubtitle tag="h6" className="mb-2 text-muted">{item.price} <FaRubleSign/> </CardSubtitle>
-          <Button>Купить</Button>
+          <Button onClick={() => setCount(count + 1)}>Купить {count}</Button>
+
         </CardBody>
         </Card>
         </Col>

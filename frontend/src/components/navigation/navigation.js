@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Nav, NavItem, NavLink} from 'reactstrap';
+import {Nav, NavItem, NavLink, Badge} from 'reactstrap';
 
 export default class Navigation extends Component {
    
@@ -15,7 +15,7 @@ export default class Navigation extends Component {
                 <NavLink href="#">Товары</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Корзина</NavLink>
+                <NavLink href="#">Корзина <Badge color="secondary">New</Badge> </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink  href="#">Контакты</NavLink>
