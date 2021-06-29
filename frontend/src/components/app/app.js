@@ -1,46 +1,59 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import CardProduct from '../card/card.js';
 import HomePage from '../home/home.js';
 import MapBasics from '../contacts/contacts.js';
 import Navigation from '../navigation';
+import CartGoods from '../cart/cart.js';
 import Example from '../mainmenu';
 import { Container, Row, Col } from 'reactstrap';
+import {
+  BrowserRouter as Router,
+  Route
+} from "react-router-dom";
 
 
 const Background = {
   backgroundColor: "#DCDCDC"
  }
-export default class App extends Component {
+function App () {
 
+  const [count, setCount] = useState(0);
 
-    render() {
+  const [goods, orderGoods]= useState([]);
+
         return (
-    <div style={Background}>
+          <Router>
+<div style={Background}>
       <Row>
         <Col sm="12">
         <Example/>
         </Col>
-
-
       </Row>
-
       <Container>
-
       <Row>
-
         <Col xs="2">
-       <Navigation/>
+       <Navigation
+       count={count}
+       setCount={setCount}/>
         </Col>
-
     <Col sm="10" className="d-flex flex-wrap justify-content-around">
      
-      <CardProduct/>
-      {/* <HomePage/> */}
-      {/* <MapBasics/> */}
+     <Route path='/products'> 
+     <CardProduct
+     orderGoods={orderGoods}/>
+     </Route>
+     <Route path='/' exact component={HomePage}/>
+     <Route path='/contacts' component={MapBasics}/>
+     <Route path='/cart'>
+      <CartGoods
+      goodsForOrder={goods}/>
+      </Route>
     </Col>
       </Row>
     </Container>
     </div>
+          </Router>
         );
-    }
 }
+
+export default App;

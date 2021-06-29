@@ -1,28 +1,30 @@
 import React, {Component} from 'react';
 import {Nav, NavItem, NavLink, Badge} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-export default class Navigation extends Component {
+function Navigation({count}) {
    
-    render() {
+    
         return ( 
             <div>
             <hr />
             <Nav vertical >
               <NavItem>
-                <NavLink href="#">Главная</NavLink>
+                <Link to='/'>Главная</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Товары</NavLink>
+                <Link to='/products'>Товары</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Корзина <Badge color="secondary">New</Badge> </NavLink>
+                <Link to='/cart'> Корзина <Badge color="secondary">{count}</Badge> </Link>
               </NavItem>
               <NavItem>
-                <NavLink  href="#">Контакты</NavLink>
+                <Link to='/contacts'>Контакты</Link>
               </NavItem>
             </Nav>
             <hr />
       </div>
         );
-    }
 }
+
+export default Navigation;

@@ -9,7 +9,7 @@ import {
   NavLink,
   NavbarText
 } from 'reactstrap';
-import { FcBiomass, FcBusinessman } from "react-icons/fc";
+import { FcBiomass } from "react-icons/fc";
 
 const Example = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,13 +28,13 @@ const Example = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto offset-md-3" navbar>
             <NavItem>
-              <NavLink href="/components/">Пока не знаю</NavLink>
+              <NavLink href="/components/">Войти</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/reactstrap">Пока не знаю</NavLink>
+              <NavLink href="/reactstrap">Зарегистрироватся</NavLink>
             </NavItem>
           </Nav>
-          <NavbarText className="offset-md-2">Разработано c божьей помощью и Александром <FcBusinessman/> </NavbarText>
+          <NavbarText className="offset-md-2"> Только качественные товары </NavbarText>
         </Collapse>
         </div>
       </Navbar>
