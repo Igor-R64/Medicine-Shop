@@ -17,9 +17,14 @@ const Background = {
  }
 function App () {
 
-  const [count, setCount] = useState(0);
+  const [count, _setCount] = useState(0);
+
+  const setCount = () => {
+    _setCount(count + 1)
+  }
 
   const [goods, orderGoods]= useState([]);
+
 
         return (
           <Router>
@@ -40,7 +45,7 @@ function App () {
      
      <Route path='/products'> 
      <CardProduct
-     orderGoods={orderGoods}/>
+     setCount={setCount}/>
      </Route>
      <Route path='/' exact component={HomePage}/>
      <Route path='/contacts' component={MapBasics}/>

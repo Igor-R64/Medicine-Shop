@@ -16,7 +16,7 @@ function Navigation({count}) {
                 <Link to='/products'>Товары</Link>
               </NavItem>
               <NavItem>
-                <Link to='/cart'> Корзина <Badge color="secondary">{count}</Badge> </Link>
+                <Link to='/cart'> Корзина </Link><span>{count}</span>
               </NavItem>
               <NavItem>
                 <Link to='/contacts'>Контакты</Link>

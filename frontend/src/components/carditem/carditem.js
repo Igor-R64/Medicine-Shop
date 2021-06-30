@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Col } from 'reactstrap';
 import { FaRubleSign } from 'react-icons/fa';
 
-function CardItem ({item}) {
+function CardItem (props) {
 
-    const [count, setCount] = useState(0);
+    const item = props.item;
 
-    // const item = props.item;
+    const setCount = props.setCount;
+
 
     return (
         <Card>
@@ -16,7 +17,7 @@ function CardItem ({item}) {
           <CardSubtitle tag="h6" className="mb-2 text-muted">{item.type}</CardSubtitle>
           <CardText>{item.description}</CardText>
           <CardSubtitle tag="h6" className="mb-2 text-muted">{item.price} <FaRubleSign/> </CardSubtitle>
-          <Button onClick={() => setCount(count + 1)}>Купить {count}</Button>
+          <Button onClick={() => setCount()}>Купить</Button>
         </CardBody>
         </Card>
     )
