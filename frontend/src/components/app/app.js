@@ -5,6 +5,7 @@ import MapBasics from '../contacts/contacts.js';
 import Navigation from '../navigation';
 import BasketGoods from '../basket/basket.js';
 import Example from '../mainmenu';
+import OrderPage from '../orderpage/orderpage.js';
 import { Container, Row, Col } from 'reactstrap';
 import {
   BrowserRouter as Router,
@@ -19,7 +20,7 @@ function App() {
 
   const [goodsForOrder, _addGoodToBasket] = useState([]);
 
-  const addGoodToBasket = (id) => { _addGoodToBasket([...goodsForOrder, id]);};
+  const addGoodToBasket = (id) => { _addGoodToBasket([...goodsForOrder,{id}]);};
 
 
   return (
