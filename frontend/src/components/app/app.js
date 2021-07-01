@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CardProduct from '../card/card.js';
 import HomePage from '../home/home.js';
 import MapBasics from '../contacts/contacts.js';
 import Navigation from '../navigation';
-import CartGoods from '../cart/cart.js';
+import BasketGoods from '../basket/basket.js';
 import Example from '../mainmenu';
 import { Container, Row, Col } from 'reactstrap';
 import {
@@ -14,51 +14,47 @@ import {
 
 const Background = {
   backgroundColor: "#DCDCDC"
- }
-function App () {
+}
+function App() {
 
-  const [count, _setCount] = useState(0);
+  const [goodsForOrder, _addGoodToBasket] = useState([]);
 
-  const setCount = () => {
-    _setCount(count + 1)
-  }
-
-  const [goods, orderGoods]= useState([]);
+  const addGoodToBasket = (id) => { _addGoodToBasket([...goodsForOrder, id]);};
 
 
-        return (
-          <Router>
-<div style={Background}>
-      <Row>
-        <Col sm="12">
-        <Example/>
-        </Col>
-      </Row>
-      <Container>
-      <Row>
-        <Col xs="2">
-       <Navigation
-       count={count}
-       setCount={setCount}/>
-        </Col>
-    <Col sm="10" className="d-flex flex-wrap justify-content-around">
-     
-     <Route path='/products'> 
-     <CardProduct
-     setCount={setCount}/>
-     </Route>
-     <Route path='/' exact component={HomePage}/>
-     <Route path='/contacts' component={MapBasics}/>
-     <Route path='/cart'>
-      <CartGoods
-      goodsForOrder={goods}/>
-      </Route>
-    </Col>
-      </Row>
-    </Container>
-    </div>
-          </Router>
-        );
+  return (
+    <Router>
+      <div style={Background}>
+        <Row>
+          <Col sm="12">
+            <Example />
+          </Col>
+        </Row>
+        <Container>
+          <Row>
+            <Col xs="2">
+              <Navigation
+                count={goodsForOrder.length}
+                />
+            </Col>
+            <Col sm="10" className="d-flex flex-wrap justify-content-around">
+
+              <Route path='/products'>
+                <CardProduct
+                  addGoodToBasket={addGoodToBasket}
+                />
+              </Route>
+              <Route path='/' exact component={HomePage} />
+              <Route path='/contacts' component={MapBasics} />
+              <Route path='/basket'>
+                <BasketGoods  goodsForOrder={goodsForOrder} />
+              </Route>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

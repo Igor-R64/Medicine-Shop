@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Col } from 'reactstrap';
-import { FaRubleSign } from 'react-icons/fa';
+import { Col } from 'reactstrap';
 import CardItem from '../carditem';
 
 
-function CardProduct (props) {
+function CardProduct(props) {
 
-  const setCount = props.setCount;
+  // eslint-disable-next-line react/prop-types
+  const addGoodToBasket = props.addGoodToBasket;
 
   const [product, setItems] = useState([]);
 
@@ -17,22 +17,22 @@ function CardProduct (props) {
       .then((result) => setItems(result))
       .catch((e) => console.log(e))
   }, [])
-  
- 
-    return (
-      <>
-        {product.map((item) => (
-          <Col sm="4" className="d-flex p-4">
-          <CardItem
-          setCount={setCount}
-          item={item}/>
-        </Col>        
-        ))}
-      </>
-    );
-  }
-    
-export default CardProduct;
-    
 
-  
+
+  return (
+    <>
+      {product.map((item) => (
+        // eslint-disable-next-line react/jsx-key
+        <Col sm="4" className="d-flex p-4">
+          <CardItem
+            addGoodToBasket={addGoodToBasket}
+            item={item} />
+        </Col>
+      ))}
+    </>
+  );
+}
+
+export default CardProduct;
+
+

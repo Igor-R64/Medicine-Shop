@@ -25,7 +25,8 @@ const items = [
   }
 ];
 
-function HomePage (props) {
+// eslint-disable-next-line no-unused-vars
+function HomePage(props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -49,7 +50,7 @@ function HomePage (props) {
 
   const slides = items.map((item) => {
     return (
-      <CarouselItem 
+      <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.src}

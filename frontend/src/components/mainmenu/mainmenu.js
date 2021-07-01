@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import { FcBiomass } from "react-icons/fc";
 
+// eslint-disable-next-line no-unused-vars
 const Example = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,11 +19,11 @@ const Example = (props) => {
 
   return (
 
-      <Navbar className="d-flex " color="info" light expand="md">
-          <div className="d-flex container-fluid">
-            <NavbarBrand className="offset-md-1 text-success"  href="/">Medicine SHOP <FcBiomass/> </NavbarBrand>  
-         
-        
+    <Navbar className="d-flex " color="info" light expand="md">
+      <div className="d-flex container-fluid">
+        <NavbarBrand className="offset-md-1 text-success" href="/">Medicine SHOP <FcBiomass /> </NavbarBrand>
+
+
 
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -36,10 +37,10 @@ const Example = (props) => {
           </Nav>
           <NavbarText className="offset-md-2"> Только качественные товары </NavbarText>
         </Collapse>
-        </div>
-      </Navbar>
+      </div>
+    </Navbar>
 
-   
+
   );
 }
 
