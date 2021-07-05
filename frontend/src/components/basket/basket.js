@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Alert, Button  } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
 import { FaCartPlus, FaRubleSign } from "react-icons/fa";
-import OrderPage from '../orderpage/orderpage.js';
+import { Link } from 'react-router-dom';
+// import OrderPage from '../orderpage/orderpage.js';
 import './basket.css';
 
 // eslint-disable-next-line no-unused-vars
@@ -19,7 +20,7 @@ function BasketGoods(props) {
     }, [])
 
     // eslint-disable-next-line react/prop-types
-    const productToOrder = product.filter((a1) => (props.goodsForOrder.find(a2 => a1.id === a2.id)));
+    const productToOrder = product.filter((a1) => (props.goodsForOrder.find(a2 => a1.id === a2)));
 
 
     return (
@@ -67,18 +68,34 @@ function BasketGoods(props) {
 
                     </Row>
 
-
-
-
-
                 ))}
 
                 <Col xs="3" className="offset-md-9"><Alert color="primary">
                     Всего:
                 </Alert></Col>
+
+    <Form>
+    <Col sm={5}>
+      <FormGroup>
+        <Label for="exampleEmail">Email</Label>
+        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+      </FormGroup>
+      <FormGroup>
+        <Label for="exampleUsername">Имя</Label>
+        <Input type="username" name="username" id="exampleUsername" placeholder="username placeholder" />
+      </FormGroup>
+      <FormGroup>
+        <Label for="examplePhone">Телефон</Label>
+        <Input type="phone" name="phone" id="examplePhone" placeholder="phone placeholder" />
+      </FormGroup>
+      </Col>
+    </Form>
+
+
+
             </Container>
             <div>
-      <Button color="primary">Оформить заказ</Button>{' '}
+                    <Link to='/order' className="btn btn-primary">Оформить заказ</Link>
       
     </div>
 
