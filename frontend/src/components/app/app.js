@@ -20,7 +20,7 @@ function App() {
 
   const [goodsForOrder, _addGoodToBasket] = useState([]);
 
-  const addGoodToBasket = (id) => { _addGoodToBasket([...goodsForOrder, id]);};
+  const addGoodToBasket = (id) => { _addGoodToBasket([...goodsForOrder, id]); };
 
 
   return (
@@ -36,7 +36,7 @@ function App() {
             <Col xs="2">
               <Navigation
                 count={goodsForOrder.length}
-                />
+              />
             </Col>
             <Col sm="10" className="d-flex flex-wrap justify-content-around">
 
@@ -47,11 +47,10 @@ function App() {
               </Route>
               <Route path='/' exact component={HomePage} />
               <Route path='/contacts' component={MapBasics} />
-              <Route path='/order' component={OrderPage} />
+              <Route path='/order' component={OrderPage}
+                count={goodsForOrder} />
               <Route path='/basket'>
-              <BasketGoods  goodsForOrder={goodsForOrder} />
-              
-
+                <BasketGoods goodsForOrder={goodsForOrder} />
               </Route>
             </Col>
           </Row>

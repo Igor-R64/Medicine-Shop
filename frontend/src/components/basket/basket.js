@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { FaCartPlus, FaRubleSign } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 // import OrderPage from '../orderpage/orderpage.js';
@@ -9,6 +9,8 @@ import './basket.css';
 function BasketGoods(props) {
 
     const [product, setItems] = useState([]);
+
+    const [countselect, setCountSelect] = useState([]);
 
 
 
@@ -21,6 +23,16 @@ function BasketGoods(props) {
 
     // eslint-disable-next-line react/prop-types
     const productToOrder = product.filter((a1) => (props.goodsForOrder.find(a2 => a1.id === a2)));
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+      }
 
 
     return (
@@ -74,30 +86,30 @@ function BasketGoods(props) {
                     Всего:
                 </Alert></Col>
 
-    <Form>
-    <Col sm={5}>
-      <FormGroup>
-        <Label for="exampleEmail">Email</Label>
-        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="exampleUsername">Имя</Label>
-        <Input type="username" name="username" id="exampleUsername" placeholder="username placeholder" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="examplePhone">Телефон</Label>
-        <Input type="phone" name="phone" id="examplePhone" placeholder="phone placeholder" />
-      </FormGroup>
-      </Col>
-    </Form>
+                <Form>
+                    <Col sm={5}>
+                        <FormGroup>
+                            <Label for="exampleEmail">Email</Label>
+                            <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="exampleUsername">Имя</Label>
+                            <Input type="username" name="username" id="exampleUsername" placeholder="username placeholder" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="examplePhone">Телефон</Label>
+                            <Input type="phone" name="phone" id="examplePhone" placeholder="phone placeholder" />
+                        </FormGroup>
+                    </Col>
+                </Form>
 
 
 
             </Container>
             <div>
-                    <Link to='/order' className="btn btn-primary">Оформить заказ</Link>
-      
-    </div>
+                <Link to='/order' className="btn btn-primary">Оформить заказ</Link>
+
+            </div>
 
         </>
     );

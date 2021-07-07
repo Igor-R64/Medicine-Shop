@@ -2,7 +2,10 @@ import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 
-function OrderPage () {
+function OrderPage() {
+
+  // const addGoodToBasket = props.addGoodToBasket;
+
 
   let history = useHistory();
 
@@ -19,10 +22,11 @@ function OrderPage () {
         <p>Заказ успешно оформлен и будет доставлен через 5 дней.</p>
         <p className="lead">
           <Button
-           color="primary" 
-           onClick={handleClick}>
-           Вернутся на главную
-           </Button>
+            color="primary"
+            onClick={handleClick}
+          >
+            Вернутся на главную
+          </Button>
         </p>
       </Jumbotron>
     </div>
