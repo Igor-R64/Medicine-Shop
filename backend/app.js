@@ -5,6 +5,7 @@ const fs = require("fs");
 const app = express();
 const jsonParser = express.json();
 const filePath = "product.json";
+const fileP = "test.json";
 
 app.get("/api/goods", function(req, res){
        
@@ -43,7 +44,7 @@ app.post("/api/goods", jsonParser, function (req, res) {
 
     let product = {count: proCount, title: proTitle, price: proPrice};
       
-    let data = fs.readFileSync(filePath, "utf8");
+    let data = fs.readFileSync(fileP, "utf8");
     let products = JSON.parse(data);
       
     
@@ -51,7 +52,7 @@ app.post("/api/goods", jsonParser, function (req, res) {
     product.id = id+1;
     products.push(product);
     data = JSON.stringify(products);
-    fs.writeFileSync("product.json", data);
+    fs.writeFileSync("test.json", data);
     res.send(product);
 });
 app.delete("/api/goods/:id", function(req, res){

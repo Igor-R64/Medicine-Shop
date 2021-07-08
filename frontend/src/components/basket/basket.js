@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Alert, Button } from 'reactstrap';
 import { FaCartPlus, FaRubleSign } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import OrderPage from '../orderpage/orderpage.js';
 import './basket.css';
 
@@ -10,7 +10,25 @@ function BasketGoods(props) {
 
     const [product, setItems] = useState([]);
 
-    const [countselect, setCountSelect] = useState([]);
+    const [select, setSelect] = useState('1');
+    const [mail, setMail] = useState('');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const goodsForModeration = { count: mail, title: name, price: phone };
+        console.log(goodsForModeration);
+
+        fetch('/api/goods', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(goodsForModeration)
+        }).then(() => {
+            console.log('OK');
+        })
+    }
+
 
 
 
@@ -24,15 +42,7 @@ function BasketGoods(props) {
     // eslint-disable-next-line react/prop-types
     const productToOrder = product.filter((a1) => (props.goodsForOrder.find(a2 => a1.id === a2)));
 
-    handleInputChange(event) {
-        const target = event.target;
-        const value = target.type;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
+
 
 
     return (
@@ -65,7 +75,12 @@ function BasketGoods(props) {
                                 <Form>
                                     <FormGroup>
                                         <Label for="exampleSelect">Количество</Label>
-                                        <Input type="select" name="select" id="exampleSelect">
+                                        <Input
+                                            type="select"
+                                            name="select"
+                                            id="exampleSelect"
+                                            value={select}
+                                            onChange={(e) => setSelect(e.target.value)}>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -86,30 +101,56 @@ function BasketGoods(props) {
                     Всего:
                 </Alert></Col>
 
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Col sm={5}>
                         <FormGroup>
                             <Label for="exampleEmail">Email</Label>
-                            <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                            <Input type="email"
+                                name="email"
+                                id="exampleEmail"
+                                required
+                                placeholder="with a placeholder"
+                                value={mail}
+                                onChange={(e) => setMail(e.target.value)} />
                         </FormGroup>
                         <FormGroup>
                             <Label for="exampleUsername">Имя</Label>
-                            <Input type="username" name="username" id="exampleUsername" placeholder="username placeholder" />
+                            <Input type="username"
+                                name="username"
+                                id="exampleUsername"
+                                required
+                                placeholder="username placeholder"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)} />
                         </FormGroup>
                         <FormGroup>
                             <Label for="examplePhone">Телефон</Label>
-                            <Input type="phone" name="phone" id="examplePhone" placeholder="phone placeholder" />
+                            <Input type="phone"
+                                name="phone"
+                                id="examplePhone"
+                                required
+                                placeholder="phone placeholder"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)} />
                         </FormGroup>
-                    </Col>
+                   
+                    
+                        {/* <Link to='/order'> */}
+                            <Button className="btn btn-primary">Оформить заказ</Button>
+                        {/* </Link> */}
+                        </Col>
+                    
+
                 </Form>
+                <p>{mail}</p>
+                <p>{name}</p>
+                <p>{phone}</p>
+                <p>{select}</p>
 
 
 
             </Container>
-            <div>
-                <Link to='/order' className="btn btn-primary">Оформить заказ</Link>
 
-            </div>
 
         </>
     );
