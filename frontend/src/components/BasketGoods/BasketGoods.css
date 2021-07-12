@@ -1,0 +1,15 @@
+#border {
+    background: #95adc734;
+    color: white; 
+    border-bottom-width: 1px; 
+    border-bottom-style: solid; 
+    border-bottom-color: rgba(216, 197, 197, 0.966);
+}
+
+#image {
+    margin: 0px;
+    min-width: 0px;
+    max-width: 100%;
+    height: auto;
+    width: 100px;
+}
