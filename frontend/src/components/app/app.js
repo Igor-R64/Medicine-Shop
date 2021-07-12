@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import CardProduct from '../card/card.js';
-import HomePage from '../home/home.js';
-import MapBasics from '../contacts/contacts.js';
-import Navigation from '../navigation';
-import BasketGoods from '../basket/basket.js';
-import Example from '../mainmenu';
-import OrderPage from '../orderpage/orderpage.js';
+import CardProduct from '../CardProduct/CardProduct.js';
+import HomePage from '../HomePage/HomePage.js';
+import Contacts from '../Contacts/Contacts.js';
+import Navigation from '../Navigation';
+import BasketGoods from '../BasketGoods/BasketGoods.js';
+import Example from '../MainMenu';
+import OrderPage from '../OrderPage/OrderPage.js';
 import { Container, Row, Col } from 'reactstrap';
 import {
   BrowserRouter as Router,
@@ -21,6 +21,7 @@ function App() {
   const [goodsForOrder, _addGoodToBasket] = useState([]);
 
   const addGoodToBasket = (id) => { _addGoodToBasket([...goodsForOrder, id]); };
+  const clearBasket = () => { _addGoodToBasket([ ]); };
 
 
   return (
@@ -46,11 +47,13 @@ function App() {
                 />
               </Route>
               <Route path='/' exact component={HomePage} />
-              <Route path='/contacts' component={MapBasics} />
+              <Route path='/contacts' component={Contacts} />
               <Route path='/order' component={OrderPage}
                 count={goodsForOrder} />
               <Route path='/basket'>
-                <BasketGoods goodsForOrder={goodsForOrder} />
+                <BasketGoods
+                clearBasket={clearBasket} 
+                goodsForOrder={goodsForOrder} />
               </Route>
             </Col>
           </Row>

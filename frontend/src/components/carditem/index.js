@@ -1,2 +1,2 @@
-import CardItem from "./carditem";
+import CardItem from "./CardItem";
 export default CardItem;

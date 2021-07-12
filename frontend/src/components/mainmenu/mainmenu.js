@@ -12,7 +12,7 @@ import {
 import { FcBiomass } from "react-icons/fc";
 
 // eslint-disable-next-line no-unused-vars
-const Example = (props) => {
+const MainMenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -44,4 +44,4 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default MainMenu;

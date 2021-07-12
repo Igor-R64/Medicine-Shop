@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Alert, Button } from 'reactstrap';
 import { FaCartPlus, FaRubleSign } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 // import { Link } from 'react-router-dom';
 // import OrderPage from '../orderpage/orderpage.js';
-import './basket.css';
+import './BasketGoods.css';
 
 // eslint-disable-next-line no-unused-vars
 function BasketGoods(props) {
 
     const [product, setItems] = useState([]);
 
-    const [select, setSelect] = useState('1');
+    const [goodsAmount, _setGoodsamount] = useState([]);
     const [mail, setMail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
 
+    const setGoodsamount = (id, value) => {
+        _setGoodsamount([...goodsAmount, {id: id, count: value}]);
+
+    }
+
+    let history = useHistory();
+
+    function handleClick() {
+        history.push("/order");
+      }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const goodsForModeration = { count: mail, title: name, price: phone };
-        console.log(goodsForModeration);
+        const goodsForModeration = { count: mail, title: name, price: goodsAmount };
 
         fetch('/api/goods', {
             method: 'POST',
@@ -26,6 +38,11 @@ function BasketGoods(props) {
             body: JSON.stringify(goodsForModeration)
         }).then(() => {
             console.log('OK');
+            // eslint-disable-next-line react/prop-types
+            props.clearBasket();
+            setTimeout(()=>{
+                handleClick();
+            }, 2000)
         })
     }
 
@@ -79,8 +96,8 @@ function BasketGoods(props) {
                                             type="select"
                                             name="select"
                                             id="exampleSelect"
-                                            value={select}
-                                            onChange={(e) => setSelect(e.target.value)}>
+                                            value={goodsAmount.length === 0 ? null : goodsAmount.filter(obj => obj.id === item.id)}
+                                            onChange={(e) =>  setGoodsamount(item.id, e.target.value)}>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -133,11 +150,9 @@ function BasketGoods(props) {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)} />
                         </FormGroup>
-                   
-                    
-                        {/* <Link to='/order'> */}
-                            <Button className="btn btn-primary">Оформить заказ</Button>
-                        {/* </Link> */}
+                           <Button className="btn btn-primary"
+                            disabled={props.goodsForOrder.length === 0 ? disabled : ''}>
+                               Оформить заказ</Button>
                         </Col>
                     
 
@@ -145,7 +160,7 @@ function BasketGoods(props) {
                 <p>{mail}</p>
                 <p>{name}</p>
                 <p>{phone}</p>
-                <p>{select}</p>
+                <p>{JSON.stringify(goodsAmount)}</p>
 
 
 

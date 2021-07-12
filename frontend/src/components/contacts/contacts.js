@@ -5,7 +5,7 @@ import { Row, Col, Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 const mapState = { center: [51.53, 46.03], zoom: 13 };
 
-class MapBasics extends React.Component {
+class Contacts extends React.Component {
   state = { showMap: true };
 
   toggleMap() {
@@ -81,4 +81,4 @@ class MapBasics extends React.Component {
   }
 }
 
-export default MapBasics;
+export default Contacts;

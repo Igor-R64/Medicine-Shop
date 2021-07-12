@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Col } from 'reactstrap';
-import CardItem from '../carditem';
+import CardItem from '../CardItem';
 
 
 function CardProduct(props) {
