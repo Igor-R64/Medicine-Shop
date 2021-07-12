@@ -27,6 +27,10 @@ function BasketGoods(props) {
         history.push("/order");
       }
 
+      const hSubmit = (e) => {
+        e.preventDefault();
+      }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -74,7 +78,7 @@ function BasketGoods(props) {
                 {productToOrder.map((item) => (
 
                     <Row key={item.id}>
-                        <Col id='border' xs="12" className="d-flex ">
+                        <Col id='border' xs="9" className="d-flex ">
                             <div>
                                 <img id='image' src={item.img} alt="альтернативный текст" />
                             </div>
@@ -89,7 +93,7 @@ function BasketGoods(props) {
                                 <FaRubleSign /> {item.price}
                             </div>
                             <div className="offset-md-1">
-                                <Form>
+                                <Form onSubmit={hSubmit}>
                                     <FormGroup>
                                         <Label for="exampleSelect">Количество</Label>
                                         <Input
@@ -109,14 +113,15 @@ function BasketGoods(props) {
                             </div>
 
                         </Col>
+                        <Col xs="3" className="offset-md-9"><Alert color="primary">
+                    Всего:
+                </Alert></Col>
 
                     </Row>
 
                 ))}
 
-                <Col xs="3" className="offset-md-9"><Alert color="primary">
-                    Всего:
-                </Alert></Col>
+               
 
                 <Form onSubmit={handleSubmit}>
                     <Col sm={5}>
@@ -150,9 +155,12 @@ function BasketGoods(props) {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)} />
                         </FormGroup>
-                           <Button className="btn btn-primary"
-                            disabled={props.goodsForOrder.length === 0 ? disabled : ''}>
+                           <Button className="btn btn-primary">
                                Оформить заказ</Button>
+                               {/* <Button className="btn btn-primary" */}
+                            {/* // disabled={props.goodsForOrder.length === 0 ? disabled : ''}> */}
+                               {/* Оформить заказ</Button> */}
+                               
                         </Col>
                     
 
@@ -162,7 +170,7 @@ function BasketGoods(props) {
                 <p>{phone}</p>
                 <p>{JSON.stringify(goodsAmount)}</p>
 
-
+    
 
             </Container>
 

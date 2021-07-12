@@ -9,7 +9,7 @@ import {
   NavLink,
   NavbarText
 } from 'reactstrap';
-import { FcBiomass } from "react-icons/fc";
+import './MainMenu.css';
 
 // eslint-disable-next-line no-unused-vars
 const MainMenu = (props) => {
@@ -19,23 +19,25 @@ const MainMenu = (props) => {
 
   return (
 
-    <Navbar className="d-flex " color="info" light expand="md">
+    <Navbar className="d-flex header" light expand="md">
       <div className="d-flex container-fluid">
-        <NavbarBrand className="offset-md-1 text-success" href="/">Medicine SHOP <FcBiomass /> </NavbarBrand>
+        <NavbarBrand className= "text-success" href="/"> 
+        <img className="logo" src={"/images/log1.png"} alt="logo" />
+        </NavbarBrand>
 
 
 
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto offset-md-3" navbar>
+        <NavbarText id="nav-header3" className="offset-md-3"> Только качественные товары </NavbarText>
+          <Nav className="mr-auto offset-md-3 " navbar>
             <NavItem>
-              <NavLink href="/components/">Войти</NavLink>
+              <NavLink id="nav-header1" href="/components/">Войти</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/reactstrap">Зарегистрироватся</NavLink>
+              <NavLink id="nav-header2" href="/reactstrap">Зарегистрироватся</NavLink>
             </NavItem>
           </Nav>
-          <NavbarText className="offset-md-2"> Только качественные товары </NavbarText>
         </Collapse>
       </div>
     </Navbar>

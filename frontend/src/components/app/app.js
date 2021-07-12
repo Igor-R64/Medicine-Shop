@@ -4,7 +4,7 @@ import HomePage from '../HomePage/HomePage.js';
 import Contacts from '../Contacts/Contacts.js';
 import Navigation from '../Navigation';
 import BasketGoods from '../BasketGoods/BasketGoods.js';
-import Example from '../MainMenu';
+import MainMenu from '../MainMenu';
 import OrderPage from '../OrderPage/OrderPage.js';
 import { Container, Row, Col } from 'reactstrap';
 import {
@@ -12,33 +12,40 @@ import {
   Route
 } from "react-router-dom";
 
+import "./App.css";
 
-const Background = {
-  backgroundColor: "#DCDCDC"
-}
+
+
 function App() {
 
   const [goodsForOrder, _addGoodToBasket] = useState([]);
 
   const addGoodToBasket = (id) => { _addGoodToBasket([...goodsForOrder, id]); };
-  const clearBasket = () => { _addGoodToBasket([ ]); };
+  const clearBasket = () => { _addGoodToBasket([]); };
 
 
   return (
     <Router>
-      <div style={Background}>
+      <div className="wrapper">
         <Row>
           <Col sm="12">
-            <Example />
+            <MainMenu />
           </Col>
         </Row>
+
+        <Row>
+
+          <Navigation
+            count={goodsForOrder.length}
+          />
+
+        </Row>
+
+
+
+
         <Container>
           <Row>
-            <Col xs="2">
-              <Navigation
-                count={goodsForOrder.length}
-              />
-            </Col>
             <Col sm="10" className="d-flex flex-wrap justify-content-around">
 
               <Route path='/products'>
@@ -52,14 +59,18 @@ function App() {
                 count={goodsForOrder} />
               <Route path='/basket'>
                 <BasketGoods
-                clearBasket={clearBasket} 
-                goodsForOrder={goodsForOrder} />
+                  clearBasket={clearBasket}
+                  goodsForOrder={goodsForOrder} />
               </Route>
             </Col>
           </Row>
         </Container>
       </div>
+    <footer className="footer">
+      qqqqqwwwwwwwwwwwwww
+    </footer>
     </Router>
+    
   );
 }
 
