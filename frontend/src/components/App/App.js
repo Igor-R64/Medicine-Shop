@@ -6,13 +6,14 @@ import Navigation from '../Navigation';
 import BasketGoods from '../BasketGoods/BasketGoods.js';
 import MainMenu from '../MainMenu';
 import OrderPage from '../OrderPage/Orderpage.js';
+import Footer from '../Footer/Footer.js';
 import { Container, Row, Col } from 'reactstrap';
 import {
   BrowserRouter as Router,
   Route
 } from "react-router-dom";
 
-import "./App.css";
+// import "./App.css";
 
 
 
@@ -64,11 +65,9 @@ function App() {
               </Route>
             </Col>
           </Row>
-        </Container>
+        </Container>   
       </div>
-    <footer className="footer">
-      qqqqqwwwwwwwwwwwwww
-    </footer>
+      <Footer/>
     </Router>
     
   );
