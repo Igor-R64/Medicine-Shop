@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Alert, Button } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FaCartPlus, FaRubleSign } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { useHistory } from "react-router-dom";
 // import { Link } from 'react-router-dom';
 // import OrderPage from '../orderpage/orderpage.js';
@@ -71,20 +72,20 @@ function BasketGoods(props) {
             <Container >
                 {productToOrder.map((item) => (
                     <Row key={item.id}>
-                        <Col id='border' xs="9" className="d-flex ">
+                        <Col id='border' xs="9" className="d-flex justify-content-evenly">
                             <div>
                                 <img id='image' src={item.img} alt="альтернативный текст" />
                             </div>
-                            <div className="offset-md-1">
+                            <div className="d-flex align-items-center type-heading">
                                 {item.type}
                             </div>
-                            <div className="offset-md-2">
+                            <div className="d-flex align-items-center title-heading">
                                 {item.title}
                             </div>
-                            <div className="offset-md-1">
+                            <div className="d-flex align-items-center price-heading">
                                 <FaRubleSign /> {item.price}
                             </div>
-                            <div className="offset-md-1">
+                            <div className="d-flex align-items-center">
                                 <Form onSubmit={hSubmit}>
                                     <FormGroup>
                                         <Label for="exampleSelect">Количество</Label>
@@ -103,10 +104,11 @@ function BasketGoods(props) {
                                     </FormGroup>
                                 </Form>
                             </div>
-                        </Col>
-                        <Col xs="3" className="offset-md-9"><Alert color="primary">
-                            Всего:
-                        </Alert>
+                            <div className=" d-flex align-items-center">
+                                <button className="del" type="button">
+                                <RiDeleteBin6Line/>
+                                </button>                                
+                            </div>
                         </Col>
                     </Row>
                 ))}
