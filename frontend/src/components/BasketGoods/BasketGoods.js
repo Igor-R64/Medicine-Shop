@@ -17,7 +17,7 @@ function BasketGoods(props) {
     const [phone, setPhone] = useState('');
 
     const setGoodsamount = (id, value) => {
-        _setGoodsamount([...goodsAmount, {id: id, count: value}]);
+        _setGoodsamount([...goodsAmount, { id: id, count: value }]);
 
     }
 
@@ -25,11 +25,11 @@ function BasketGoods(props) {
 
     function handleClick() {
         history.push("/order");
-      }
+    }
 
-      const hSubmit = (e) => {
+    const hSubmit = (e) => {
         e.preventDefault();
-      }
+    }
 
 
     const handleSubmit = (e) => {
@@ -38,19 +38,17 @@ function BasketGoods(props) {
 
         fetch('/api/goods', {
             method: 'POST',
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(goodsForModeration)
         }).then(() => {
             console.log('OK');
             // eslint-disable-next-line react/prop-types
             props.clearBasket();
-            setTimeout(()=>{
+            setTimeout(() => {
                 handleClick();
             }, 2000)
         })
     }
-
-
 
 
     useEffect(() => {
@@ -63,20 +61,15 @@ function BasketGoods(props) {
     // eslint-disable-next-line react/prop-types
     const productToOrder = product.filter((a1) => (props.goodsForOrder.find(a2 => a1.id === a2)));
 
-
-
-
     return (
         <>
             <div>
                 <p>
                     Корзина товаров <FaCartPlus />
-
                 </p>
             </div>
             <Container >
                 {productToOrder.map((item) => (
-
                     <Row key={item.id}>
                         <Col id='border' xs="9" className="d-flex ">
                             <div>
@@ -88,7 +81,6 @@ function BasketGoods(props) {
                             <div className="offset-md-2">
                                 {item.title}
                             </div>
-
                             <div className="offset-md-1">
                                 <FaRubleSign /> {item.price}
                             </div>
@@ -101,7 +93,7 @@ function BasketGoods(props) {
                                             name="select"
                                             id="exampleSelect"
                                             value={goodsAmount.length === 0 ? null : goodsAmount.filter(obj => obj.id === item.id)}
-                                            onChange={(e) =>  setGoodsamount(item.id, e.target.value)}>
+                                            onChange={(e) => setGoodsamount(item.id, e.target.value)}>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -111,18 +103,13 @@ function BasketGoods(props) {
                                     </FormGroup>
                                 </Form>
                             </div>
-
                         </Col>
                         <Col xs="3" className="offset-md-9"><Alert color="primary">
-                    Всего:
-                </Alert></Col>
-
+                            Всего:
+                        </Alert>
+                        </Col>
                     </Row>
-
                 ))}
-
-               
-
                 <Form onSubmit={handleSubmit}>
                     <Col sm={5}>
                         <FormGroup>
@@ -155,26 +142,18 @@ function BasketGoods(props) {
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)} />
                         </FormGroup>
-                           <Button className="btn btn-primary">
-                               Оформить заказ</Button>
-                               {/* <Button className="btn btn-primary" */}
-                            {/* // disabled={props.goodsForOrder.length === 0 ? disabled : ''}> */}
-                               {/* Оформить заказ</Button> */}
-                               
-                        </Col>
-                    
-
+                        <Button className="btn btn-primary">
+                            Оформить заказ</Button>
+                        {/* <Button className="btn btn-primary" */}
+                        {/* // disabled={props.goodsForOrder.length === 0 ? disabled : ''}> */}
+                        {/* Оформить заказ</Button> */}
+                    </Col>
                 </Form>
                 <p>{mail}</p>
                 <p>{name}</p>
                 <p>{phone}</p>
                 <p>{JSON.stringify(goodsAmount)}</p>
-
-    
-
             </Container>
-
-
         </>
     );
 }

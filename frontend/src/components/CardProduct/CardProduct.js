@@ -23,7 +23,7 @@ function CardProduct(props) {
     <>
       {product.map((item) => (
         // eslint-disable-next-line react/jsx-key
-        <Col sm="4" className="d-flex p-4">
+        <Col sm="3" className="d-flex p-4">
           <CardItem
             addGoodToBasket={addGoodToBasket}
             item={item} />

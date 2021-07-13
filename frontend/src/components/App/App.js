@@ -15,8 +15,6 @@ import {
 
 // import "./App.css";
 
-
-
 function App() {
 
   const [goodsForOrder, _addGoodToBasket] = useState([]);
@@ -33,26 +31,16 @@ function App() {
             <MainMenu />
           </Col>
         </Row>
-
         <Row>
-
           <Navigation
-            count={goodsForOrder.length}
-          />
-
+            count={goodsForOrder.length} />
         </Row>
-
-
-
-
         <Container>
           <Row>
-            <Col sm="10" className="d-flex flex-wrap justify-content-around">
-
+            <Col sm="12" className="d-flex flex-wrap justify-content-around">
               <Route path='/products'>
                 <CardProduct
-                  addGoodToBasket={addGoodToBasket}
-                />
+                  addGoodToBasket={addGoodToBasket} />
               </Route>
               <Route path='/' exact component={HomePage} />
               <Route path='/contacts' component={Contacts} />
@@ -65,11 +53,10 @@ function App() {
               </Route>
             </Col>
           </Row>
-        </Container>   
+        </Container>
       </div>
-      <Footer/>
+      <Footer />
     </Router>
-    
   );
 }
 

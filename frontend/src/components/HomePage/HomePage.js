@@ -1,4 +1,5 @@
 import React from 'react';
+import "./HomePage.css";
 
 
 
@@ -6,7 +7,12 @@ import React from 'react';
 function HomePage(props) {
 
   return (
-    <div className="home">Jr</div>
+    <div className="home">
+      <p className="title">
+        Когда началась распрдажа в Arnie`s shop
+      </p>
+      <img src="/images/Arni.png" alt="Arni" />
+    </div>
   );
 }
 

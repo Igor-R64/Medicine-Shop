@@ -23,8 +23,7 @@ function OrderPage() {
         <p className="lead">
           <Button
             color="primary"
-            onClick={handleClick}
-          >
+            onClick={handleClick}>
             Вернутся на главную
           </Button>
         </p>

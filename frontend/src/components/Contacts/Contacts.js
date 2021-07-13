@@ -1,6 +1,6 @@
 import React from 'react';
 import { YMaps, Map } from 'react-yandex-maps';
-import { FaTelegram, FaInstagram, FaFacebook } from 'react-icons/fa';
+
 import { Row, Col, Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 const mapState = { center: [51.53, 46.03], zoom: 13 };
@@ -19,9 +19,7 @@ class Contacts extends React.Component {
     return (
 
       <div>
-
         <div className="p-3 bg-secondary my-2 rounded">
-
           <Row>
             <Col xs="6">
               <Toast>
@@ -41,32 +39,8 @@ class Contacts extends React.Component {
                 </ToastBody>
               </Toast>
             </Col>
-            <Col xs="6">
-              <Toast>
-                <ToastHeader>
-                  Мы в социальных сетях
-                </ToastHeader>
-                <ToastBody>
-                  <p href="#" >
-                    <FaTelegram /> telegram
-                  </p>
-                  <p>
-                    <FaInstagram /> instagram
-                  </p>
-                  <p>
-                    <FaFacebook /> facebook
-                  </p>
-                </ToastBody>
-              </Toast>
-            </Col>
           </Row>
-
         </div>
-
-
-
-
-
         <YMaps>
           <div id="map-basics">
             {showMap &&

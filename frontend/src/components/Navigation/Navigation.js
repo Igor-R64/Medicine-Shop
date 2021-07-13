@@ -11,7 +11,7 @@ function Navigation({ count }) {
     <Col sm="12" className="navi">
       <Nav id="nav" className="d-flex justify-content-evenly">
         <NavItem >
-          <Link className="nav-l"  to='/'>Главная</Link>
+          <Link className="nav-l" to='/'>Главная</Link>
         </NavItem >
         <NavItem >
           <Link className="nav-l" to='/products'>Товары</Link>
@@ -23,7 +23,7 @@ function Navigation({ count }) {
           <Link className="nav-l" to='/contacts'>Контакты</Link>
         </NavItem>
       </Nav>
-       </Col>
+    </Col>
   );
 }
 
