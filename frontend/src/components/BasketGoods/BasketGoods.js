@@ -28,9 +28,10 @@ function BasketGoods(props) {
         history.push("/order");
     }
 
-    const hSubmit = (e) => {
-        e.preventDefault();
+    const handleClickDel= () => {
+
     }
+
 
 
     const handleSubmit = (e) => {
@@ -62,6 +63,8 @@ function BasketGoods(props) {
     // eslint-disable-next-line react/prop-types
     const productToOrder = product.filter((a1) => (props.goodsForOrder.find(a2 => a1.id === a2)));
 
+    
+
     return (
         <>
             <div>
@@ -86,14 +89,14 @@ function BasketGoods(props) {
                                 <FaRubleSign /> {item.price}
                             </div>
                             <div className="d-flex align-items-center">
-                                <Form onSubmit={hSubmit}>
+                                <Form onSubmit>
                                     <FormGroup>
                                         <Label for="exampleSelect">Количество</Label>
                                         <Input
                                             type="select"
                                             name="select"
                                             id="exampleSelect"
-                                            value={goodsAmount.length === 0 ? null : goodsAmount.filter(obj => obj.id === item.id)}
+                                            value={goodsAmount.length === 0 ? null : goodsAmount.filter(obj => obj.id === item.id)[0].value}
                                             onChange={(e) => setGoodsamount(item.id, e.target.value)}>
                                             <option>1</option>
                                             <option>2</option>
@@ -105,7 +108,9 @@ function BasketGoods(props) {
                                 </Form>
                             </div>
                             <div className=" d-flex align-items-center">
-                                <button className="del" type="button">
+                                <button
+                                onClick={handleClickDel}
+                                className="del" type="button">
                                 <RiDeleteBin6Line/>
                                 </button>                                
                             </div>
@@ -151,10 +156,20 @@ function BasketGoods(props) {
                         {/* Оформить заказ</Button> */}
                     </Col>
                 </Form>
+                
                 <p>{mail}</p>
                 <p>{name}</p>
                 <p>{phone}</p>
                 <p>{JSON.stringify(goodsAmount)}</p>
+                <p>{console.log(goodsAmount.reverse().filter((thing, index, self) =>
+                        index === self.findIndex((t) => (
+                         t.id === thing.id))))}</p>
+                {/* <p>{[...new Set(goodsAmount)]}</p> */}
+                {/* <p>{goodsAmount.filter(obj => obj.id === obj.id)}</p> */}
+                {/* <p>{goodsAmount.filter((i , index) => goodsAmount.indexOf(i) == index)}</p>
+                 */}
+               
+                
             </Container>
         </>
     );

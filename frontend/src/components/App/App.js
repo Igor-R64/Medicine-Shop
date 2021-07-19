@@ -23,6 +23,7 @@ function App() {
   const clearBasket = () => { _addGoodToBasket([]); };
 
 
+
   return (
     <Router>
       <div className="wrapper">
@@ -40,6 +41,7 @@ function App() {
             <Col sm="12" className="d-flex flex-wrap justify-content-around">
               <Route path='/products'>
                 <CardProduct
+                  goodsForOrder={goodsForOrder}
                   addGoodToBasket={addGoodToBasket} />
               </Route>
               <Route path='/' exact component={HomePage} />
