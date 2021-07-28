@@ -2,16 +2,14 @@ import React from 'react';
 import "./HomePage.css";
 
 
-
-// eslint-disable-next-line no-unused-vars
-function HomePage(props) {
+function HomePage() {
 
   return (
     <div className="home">
-      <p className="title">
+      <h3 className="title">
         Когда началась распрдажа в Arnie`s shop
-      </p>
-      <img src="/images/Arni.png" alt="Arni" />
+      </h3>
+      <img className="home-img" src="/images/Arni.png" alt="Arni" />
     </div>
   );
 }

@@ -38,11 +38,11 @@ app.post("/api/goods", jsonParser, function (req, res) {
       
     if(!req.body) return res.sendStatus(400);
       
-    const proCount = req.body.count;
-    const proTitle = req.body.title;
-    const proPrice = req.body.price;
+    const proMail = req.body.mail;
+    const proName = req.body.name;
+    const proPhone = req.body.phone;
 
-    let product = {count: proCount, title: proTitle, price: proPrice};
+    let product = {mail: proMail, name: proName, phone: proPhone};
       
     let data = fs.readFileSync(fileP, "utf8");
     let products = JSON.parse(data);

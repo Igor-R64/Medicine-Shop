@@ -6,3 +6,10 @@
 .link-basket:hover {
     color: #437085;
 }
+
+.card-img {
+    min-width: 0px;
+    max-width: 100%;
+    height: auto;
+    width: 250px;
+}

@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { FaCartPlus, FaRubleSign } from "react-icons/fa";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { Container, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { FaCartPlus } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
+
+import CardItemBasket from '../CardItemBasket/CardItemBasket';
+
 // import { Link } from 'react-router-dom';
 // import OrderPage from '../orderpage/orderpage.js';
 import './BasketGoods.css';
 
-// eslint-disable-next-line no-unused-vars
 function BasketGoods(props) {
 
     const [product, setItems] = useState([]);
 
-    const [goodsAmount, _setGoodsamount] = useState([]);
+    // const [goodsAmount, _setGoodsamount] = useState([]);
     const [mail, setMail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
 
-    const setGoodsamount = (id, value) => {
-        _setGoodsamount([...goodsAmount, { id: id, count: value }]);
+    // const setGoodsamount = (id, value) => {
+    //     itemsСart(goodsAmount);
+    //     _setGoodsamount([...goodsAmount, { id: id, count: value }]);
 
-    }
+    // }
+
+    // function itemsСart() {
+    //     goodsAmount.reverse().filter((thing, index, self) =>
+    //         index === self.findIndex((t) => (
+    //             t.id === thing.id)))
+    // }
 
     let history = useHistory();
 
@@ -28,15 +37,9 @@ function BasketGoods(props) {
         history.push("/order");
     }
 
-    const handleClickDel= () => {
-
-    }
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        const goodsForModeration = { count: mail, title: name, price: goodsAmount };
+        const goodsForModeration = { mail: mail, name: name, phone: phone };
 
         fetch('/api/goods', {
             method: 'POST',
@@ -60,72 +63,36 @@ function BasketGoods(props) {
             .catch((e) => console.log(e))
     }, [])
 
-    // eslint-disable-next-line react/prop-types
     const productToOrder = product.filter((a1) => (props.goodsForOrder.find(a2 => a1.id === a2)));
 
-    
 
     return (
         <>
-            <div>
-                <p>
+            <div className="basket-title">
+                <h3>
                     Корзина товаров <FaCartPlus />
-                </p>
+                </h3>
             </div>
-            <Container >
-                {productToOrder.map((item) => (
-                    <Row key={item.id}>
-                        <Col id='border' xs="9" className="d-flex justify-content-evenly">
-                            <div>
-                                <img id='image' src={item.img} alt="альтернативный текст" />
-                            </div>
-                            <div className="d-flex align-items-center type-heading">
-                                {item.type}
-                            </div>
-                            <div className="d-flex align-items-center title-heading">
-                                {item.title}
-                            </div>
-                            <div className="d-flex align-items-center price-heading">
-                                <FaRubleSign /> {item.price}
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <Form onSubmit>
-                                    <FormGroup>
-                                        <Label for="exampleSelect">Количество</Label>
-                                        <Input
-                                            type="select"
-                                            name="select"
-                                            id="exampleSelect"
-                                            value={goodsAmount.length === 0 ? null : goodsAmount.filter(obj => obj.id === item.id)[0].value}
-                                            onChange={(e) => setGoodsamount(item.id, e.target.value)}>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </Input>
-                                    </FormGroup>
-                                </Form>
-                            </div>
-                            <div className=" d-flex align-items-center">
-                                <button
-                                onClick={handleClickDel}
-                                className="del" type="button">
-                                <RiDeleteBin6Line/>
-                                </button>                                
-                            </div>
-                        </Col>
-                    </Row>
-                ))}
-                <Form onSubmit={handleSubmit}>
-                    <Col sm={5}>
+            <div className="d-flex justify-content-between">
+                <Container className="mb-5 goods-to-order" >
+                    {productToOrder.map((item) => (
+                        <>
+                            <CardItemBasket
+                                item={item}
+                                productToOrder={productToOrder}
+                                handleDeleteElement={props.handleDeleteElement} />
+                        </>
+                    ))}
+                </Container>
+                <Form className="form-basket" onSubmit={handleSubmit}>
+                    <Col>
                         <FormGroup>
                             <Label for="exampleEmail">Email</Label>
                             <Input type="email"
                                 name="email"
                                 id="exampleEmail"
                                 required
-                                placeholder="with a placeholder"
+                                placeholder="Введите email"
                                 value={mail}
                                 onChange={(e) => setMail(e.target.value)} />
                         </FormGroup>
@@ -135,7 +102,7 @@ function BasketGoods(props) {
                                 name="username"
                                 id="exampleUsername"
                                 required
-                                placeholder="username placeholder"
+                                placeholder="Введите имя"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)} />
                         </FormGroup>
@@ -145,34 +112,25 @@ function BasketGoods(props) {
                                 name="phone"
                                 id="examplePhone"
                                 required
-                                placeholder="phone placeholder"
+                                placeholder="Введите телефон"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)} />
                         </FormGroup>
-                        <Button className="btn btn-primary">
+                        <Button className="btn btn-success mt-3">
                             Оформить заказ</Button>
                         {/* <Button className="btn btn-primary" */}
                         {/* // disabled={props.goodsForOrder.length === 0 ? disabled : ''}> */}
                         {/* Оформить заказ</Button> */}
                     </Col>
                 </Form>
-                
-                <p>{mail}</p>
-                <p>{name}</p>
-                <p>{phone}</p>
-                <p>{JSON.stringify(goodsAmount)}</p>
-                <p>{console.log(goodsAmount.reverse().filter((thing, index, self) =>
-                        index === self.findIndex((t) => (
-                         t.id === thing.id))))}</p>
-                {/* <p>{[...new Set(goodsAmount)]}</p> */}
-                {/* <p>{goodsAmount.filter(obj => obj.id === obj.id)}</p> */}
-                {/* <p>{goodsAmount.filter((i , index) => goodsAmount.indexOf(i) == index)}</p>
-                 */}
-               
-                
-            </Container>
+            </div>
         </>
     );
+}
+BasketGoods.propTypes = {
+    goodsForOrder: PropTypes.array,
+    handleDeleteElement: PropTypes.func,
+    productToOrder: PropTypes.array
 }
 
 export default BasketGoods;

@@ -3,8 +3,12 @@ height: 100%;
 width: 100%;
 }
 
-.header {
+.menu {
     background-color: #437085;
+}
+
+.header {
+    
 }
 
 #nav-header1, #nav-header2, #nav-header3 {

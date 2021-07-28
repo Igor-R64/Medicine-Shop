@@ -1,35 +1,17 @@
-#border {
-    background: #95adc734;
-    color: black; 
-    border-bottom-width: 1px; 
-    border-bottom-style: solid; 
-    border-bottom-color: rgba(216, 197, 197, 0.966);
+.basket-title {
+    padding: 10px;
+    color: rgb(58, 99, 146);
 }
 
-#image {
-    margin: 0px;
-    min-width: 0px;
-    max-width: 100%;
-    height: auto;
-    width: 100px;
+.btn-basket {
+    padding-top: 10px;
 }
 
-.type-heading {
-    width: 150px;
-}
-.title-heading {
-    width: 150px;
+.goods-to-order {
+    min-width: 1000px;
+    min-height: 800px;
 }
 
-.price-heading {
-    width: 120px;
-}
-
-.del {
-    color:brown;
-    padding: 0;
-    border: none;
-    font: inherit;
-    background-color: transparent;
-    cursor: pointer;
+.form-basket {
+    margin-left: 20px;
 }

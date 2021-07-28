@@ -2,9 +2,9 @@ import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 
-function OrderPage() {
+import "./Orderpaje.css"
 
-  // const addGoodToBasket = props.addGoodToBasket;
+function OrderPage() {
 
 
   let history = useHistory();
@@ -14,7 +14,7 @@ function OrderPage() {
   }
 
   return (
-    <div>
+    <div className="orderpage">
       <Jumbotron>
         <h1 className="display-3">Заказ успешно оформлен!</h1>
         <p className="lead">Спасибо Вам, что выбрали наш магазин.</p>
