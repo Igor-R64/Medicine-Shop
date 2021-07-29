@@ -2,6 +2,7 @@
     width: 100%;
     height: 150px;
     background-color: #437085;
+    flex: 0 0 auto;
 }
 
 .cont {

@@ -1,1 +1,1 @@
-[{"mail":"reshetnikov64@gmail.com","name":"3","phone":"55","id":1}]
+[{"mail":"reshetnikov64@gmail.com","name":"3","phone":"55","id":1},{"mail":"reshetnikovia@outlook.com","name":"test","phone":"tel","goods":[{"id":2,"count":"3"},{"id":4,"count":"2"},{"id":3,"count":"5"}],"id":2},{"mail":"capone64@rambler.ru","name":"3","phone":"222","goods":[{"id":2,"count":"1"}],"id":3},{"mail":"capone64@rambler.ru","name":"sveta","phone":"3333","goods":[{"id":4,"count":"3"},{"id":3,"count":"4"},{"id":2,"count":"4"}],"id":4}]
