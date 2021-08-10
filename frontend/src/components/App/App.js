@@ -16,6 +16,8 @@ import {
 
 function App() {
 
+  const [uuid, setUuid] = useState("");
+
   const [goodsForOrder, updateBasket] = useState([]);
 
   const clearBasket = () => { updateBasket([]); };
@@ -62,10 +64,15 @@ function App() {
             </Route>
             <Route path='/' exact component={HomePage} />
             <Route path='/contacts' component={Contacts} />
-            <Route path='/order' component={OrderPage}
-              count={goodsForOrder} />
+            <Route path='/order'>
+              <OrderPage
+                count={goodsForOrder}
+                uuid={uuid}
+              />
+            </Route>
             <Route path='/basket'>
               <BasketGoods
+                setUuid={setUuid}
                 products={products}
                 clearBasket={clearBasket}
                 goodsForOrder={goodsForOrder}

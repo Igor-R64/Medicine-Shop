@@ -54,7 +54,7 @@ app.post("/api/goods", jsonParser, function (req, res) {
     products.push(product);
     data = JSON.stringify(products);
     fs.writeFileSync("test.json", data);
-    res.send(product);
+    res.send({message : "Please provide task and task_id"});
 });
 app.delete("/api/goods/:id", function(req, res){
        

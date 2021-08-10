@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import "./Orderpaje.css"
 
-function OrderPage() {
+function OrderPage({uuid}) {
 
 
   let history = useHistory();
@@ -19,7 +19,7 @@ function OrderPage() {
         <h1 className="display-3">Заказ успешно оформлен!</h1>
         <p className="lead">Спасибо Вам, что выбрали наш магазин.</p>
         <hr className="my-2" />
-        <p>Заказ успешно оформлен и будет доставлен через 5 дней.</p>
+        <p>Заказ {uuid} успешно оформлен и будет доставлен через 5 дней.</p>
         <p className="lead">
           <Button
             color="primary"

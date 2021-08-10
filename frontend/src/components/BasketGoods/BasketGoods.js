@@ -32,20 +32,25 @@ function BasketGoods(props) {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(goodsForModeration)
-        }).then(() => {
-            console.log('OK');
-            // eslint-disable-next-line react/prop-types
+        }).then((res) => {
+            res.json();
+            // setUuid(res);
             props.clearBasket();
+           
+        }).then((data) => {
+            console.log(data);
             setTimeout(() => {
                 handleClick();
             }, 2000)
-        })
+          })
     }
 
 
     const productToOrder = [];
 
-    goodsForOrder.forEach(el => {
+    let SortgoodsForOrder = goodsForOrder.sort((a, b) => a.id - b.id)
+
+    SortgoodsForOrder.forEach(el => {
         let extendedEl;
 
         extendedEl = products.find(e => e.id === el.id);
