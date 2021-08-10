@@ -32,17 +32,21 @@ function BasketGoods(props) {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(goodsForModeration)
-        }).then((res) => {
-            res.json();
-            // setUuid(res);
-            props.clearBasket();
-           
-        }).then((data) => {
-            console.log(data);
+        }).then(res => console.log(res))
+            // .then((result) => console.log(result))
             setTimeout(() => {
-                handleClick();
-            }, 2000)
-          })
+                        handleClick();
+                    }, 2000)
+        
+        // .then((res) => {
+        //     console.log(res.json());
+        //     // setUuid(res);
+        //     props.clearBasket();
+        //     setTimeout(() => {
+        //         handleClick();
+        //     }, 2000)
+    
+        // })
     }
 
 

@@ -42,11 +42,19 @@ app.post("/api/goods", jsonParser, function (req, res) {
     const proName = req.body.name;
     const proPhone = req.body.phone;
     const proGoods = req.body.goods;
+    const proUuid = req.body.uuid;
 
-    let product = { mail: proMail, name: proName, phone: proPhone, goods: proGoods };
+    let product = { mail: proMail, name: proName, phone: proPhone, goods: proGoods, uuid: proUuid };
       
     let data = fs.readFileSync(fileP, "utf8");
     let products = JSON.parse(data);
+
+    function uuidv4() {
+        return 'xxxx-4xxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 8 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(8);
+        });
+      }
       
     
     const id = Math.max.apply(Math,products.map(function(o){return o.id;}))
@@ -54,7 +62,7 @@ app.post("/api/goods", jsonParser, function (req, res) {
     products.push(product);
     data = JSON.stringify(products);
     fs.writeFileSync("test.json", data);
-    res.send({message : "Please provide task and task_id"});
+    res.send(uuidv4());
 });
 app.delete("/api/goods/:id", function(req, res){
        
