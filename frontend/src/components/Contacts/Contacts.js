@@ -18,7 +18,7 @@ class Contacts extends React.Component {
 
     return (
 
-      <div className="mb-5">
+      <div className="mb-5 container-xxl">
         <div className="p-3 bg-secondary my-2 rounded">
          
             <Col xs="6">
@@ -45,7 +45,7 @@ class Contacts extends React.Component {
           <div id="map-basics">
             {showMap &&
               <Map
-                width='800px'
+                width='1270px'
                 height='400px'
                 state={mapState} />}
           </div>

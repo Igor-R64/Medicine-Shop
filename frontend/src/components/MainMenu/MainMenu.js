@@ -19,7 +19,7 @@ const MainMenu = () => {
 
   return (
 
-    <Navbar className="d-flex header" light expand="md">
+    <Navbar className="d-flex header container-xxl" light expand="md">
       <div className="d-flex container-fluid">
         <NavbarBrand className="text-success" href="/">
           <img className="logo" src={"/images/log1.png"} alt="logo" />
@@ -30,7 +30,7 @@ const MainMenu = () => {
             <p>Мы всегда должны выходить за пределы</p> 
             <p>© Арнольд Шварценеггер</p>
           </NavbarText>
-          <Nav className="mr-auto offset-md-3 " navbar>
+          <Nav className="mr-auto offset-md-2 " navbar>
             <NavItem>
               <NavLink id="nav-header1" href="#">Войти</NavLink>
             </NavItem>

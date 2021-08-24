@@ -27,7 +27,7 @@ app.get("/api/goods/:id", function(req, res){
         }
     }
     if(user){
-        res.send(user);
+        res.send({user});
     }
     else{
         res.status(404).send();
@@ -42,7 +42,8 @@ app.post("/api/goods", jsonParser, function (req, res) {
     const proName = req.body.name;
     const proPhone = req.body.phone;
     const proGoods = req.body.goods;
-    const proUuid = req.body.uuid;
+
+    let proUuid = uuidv4();
 
     let product = { mail: proMail, name: proName, phone: proPhone, goods: proGoods, uuid: proUuid };
       
@@ -62,7 +63,7 @@ app.post("/api/goods", jsonParser, function (req, res) {
     products.push(product);
     data = JSON.stringify(products);
     fs.writeFileSync("test.json", data);
-    res.send(uuidv4());
+    res.send(proUuid);
 });
 app.delete("/api/goods/:id", function(req, res){
        

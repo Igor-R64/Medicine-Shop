@@ -15,12 +15,15 @@ function CardItem(props) {
   return (
     <Card>
       <img className="card-img" src={item.img} alt="img" />
-      <CardBody key={item.id}>
+      <CardBody className="d-flex flex-column justify-content-between" key={item.id}>
         <CardTitle tag="h5">{item.title}</CardTitle>
         <CardSubtitle tag="h6" className="mb-2 text-muted">{item.type}</CardSubtitle>
         <CardText>{item.description}</CardText>
         <CardSubtitle tag="h6" className="mb-2 text-muted">{item.price} <FaRubleSign /> </CardSubtitle>
-        {isDisabled || props.preOrdered ? (<Link className="link-basket" to='/basket'> Перейти в Корзину </Link>) : (<Button onClick={() => { props.addGoodToBasket(item.id); setDisabled(true) }}>Купить</Button>)}
+        <div className="d-flex justify-content-end">
+          {isDisabled || props.preOrdered ? (<Link className="link-basket" to='/basket'> Перейти в Корзину </Link>) : (<Button onClick={() => { props.addGoodToBasket(item.id); setDisabled(true) }}>Купить</Button>)}
+        </div>
+
       </CardBody>
     </Card>
   )

@@ -21,7 +21,7 @@ function CardProduct(props) {
   return (
     <> 
       {product.map((item) => (
-        <Col key={item.id} sm="3" className="d-flex p-4">
+        <Col key={item.id} sm="3" className=" container-xxl d-flex p-4">
           <CardItem 
             preOrdered={props.goodsForOrder.find(i => i.id === item.id)}
             addGoodToBasket={addGoodToBasket}

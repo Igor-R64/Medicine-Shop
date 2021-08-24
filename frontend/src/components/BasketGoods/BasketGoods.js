@@ -10,12 +10,13 @@ import './BasketGoods.css';
 
 function BasketGoods(props) {
 
-    const { products, goodsForOrder, addGoodToBasket, deleteGoodFromBasket } = props;
+    const { products, goodsForOrder, addGoodToBasket, deleteGoodFromBasket, setUuid } = props;
 
 
     const [mail, setMail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [isDisabled, setDisabled] = useState(true);
 
 
     let history = useHistory();
@@ -32,21 +33,15 @@ function BasketGoods(props) {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(goodsForModeration)
-        }).then(res => console.log(res))
-            // .then((result) => console.log(result))
-            setTimeout(() => {
-                        handleClick();
-                    }, 2000)
-        
-        // .then((res) => {
-        //     console.log(res.json());
-        //     // setUuid(res);
-        //     props.clearBasket();
-        //     setTimeout(() => {
-        //         handleClick();
-        //     }, 2000)
-    
-        // })
+        }).then((response) => response.text().then((result) => setUuid(result)))
+            .then((res) => {
+                console.log(res);
+                props.clearBasket();
+                setTimeout(() => {
+                    handleClick();
+                }, 2000)
+            })
+            .catch((e) => console.log(e));
     }
 
 
@@ -65,16 +60,16 @@ function BasketGoods(props) {
 
     return (
         <>
-            <div className="basket-title">
+            <div className="basket-title container-xxl">
                 <h3>
                     Корзина товаров <FaCartPlus />
                 </h3>
             </div>
-            <div className="d-flex justify-content-between">
-                <Container className="mb-5 goods-to-order" >
+            <div className="d-flex justify-content-between container-xxl">
+                <Container className="mb-5 goods-to-order container-xxl " >
                     {productToOrder.map((item) => (
                         <Row key={item.id}>
-                            <Col id='border' className="d-flex justify-content-evenly">
+                            <Col id='border' className="d-flex justify-content-evenly container-xxl">
                                 <div>
                                     <img id='image' src={item.img} alt="альтернативный текст" />
                                 </div>
@@ -106,7 +101,7 @@ function BasketGoods(props) {
                                         </FormGroup>
                                     </Form>
                                 </div>
-                                <div className=" d-flex align-items-center">
+                                <div className=" d-flex align-items-center ">
                                     <button
                                         onClick={() => deleteGoodFromBasket(item.id)}
                                         className="del" type="button">
@@ -116,44 +111,44 @@ function BasketGoods(props) {
                             </Col>
                         </Row>
                     ))}
+                    <Form className="form-basket " onSubmit={handleSubmit}>
+                        <Col className="col-md-4">
+                            <FormGroup>
+                                <Label for="exampleEmail">Email</Label>
+                                <Input type="email"
+                                    name="email"
+                                    id="exampleEmail"
+                                    required
+                                    placeholder="Введите email"
+                                    value={mail}
+                                    onChange={(e) => setMail(e.target.value)} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="exampleUsername">Имя</Label>
+                                <Input type="username"
+                                    name="username"
+                                    id="exampleUsername"
+                                    required
+                                    placeholder="Введите имя"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="examplePhone">Телефон</Label>
+                                <Input type="phone"
+                                    name="phone"
+                                    id="examplePhone"
+                                    required
+                                    placeholder="Введите телефон"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)} />
+                            </FormGroup>
+                            {isDisabled && goodsForOrder.length === 0 ? (<Button className="btn btn-success mt-3" disabled={isDisabled} >Оформить заказ</Button>) : (<Button className="btn btn-success mt-3" disabled={false}> Оформить заказ </Button>)}
+
+                        </Col>
+                    </Form>
                 </Container>
-                <Form className="form-basket" onSubmit={handleSubmit}>
-                    <Col>
-                        <FormGroup>
-                            <Label for="exampleEmail">Email</Label>
-                            <Input type="email"
-                                name="email"
-                                id="exampleEmail"
-                                required
-                                placeholder="Введите email"
-                                value={mail}
-                                onChange={(e) => setMail(e.target.value)} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="exampleUsername">Имя</Label>
-                            <Input type="username"
-                                name="username"
-                                id="exampleUsername"
-                                required
-                                placeholder="Введите имя"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="examplePhone">Телефон</Label>
-                            <Input type="phone"
-                                name="phone"
-                                id="examplePhone"
-                                required
-                                placeholder="Введите телефон"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)} />
-                        </FormGroup>
-                        <Button className="btn btn-success mt-3">
-                            Оформить заказ</Button>
-                    </Col>
-                </Form>
-                {/* <p>{JSON.stringify(goodsForOrder)}</p> */}
+
             </div>
         </>
     );

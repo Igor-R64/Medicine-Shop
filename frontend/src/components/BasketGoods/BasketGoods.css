@@ -7,12 +7,13 @@
     padding-top: 10px;
 }
 
-.goods-to-order {
+/* .goods-to-order {
     min-width: 1000px;
-}
+} */
 
 .form-basket {
     margin-left: 20px;
+    padding-top: 20px;
 }
 
 #border {

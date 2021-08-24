@@ -8,7 +8,7 @@ function Navigation({ count }) {
 
   return (
 
-    <Nav id="nav" className="d-flex justify-content-evenly">
+    <Nav id="nav" className="container-xxl d-flex justify-content-evenly">
       <NavItem >
         <Link className="nav-l" to='/'>Главная</Link>
       </NavItem >

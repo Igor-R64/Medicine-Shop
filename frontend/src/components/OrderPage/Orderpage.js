@@ -14,12 +14,12 @@ function OrderPage({uuid}) {
   }
 
   return (
-    <div className="orderpage">
+    <div className="orderpage container-xxl">
       <Jumbotron>
         <h1 className="display-3">Заказ успешно оформлен!</h1>
         <p className="lead">Спасибо Вам, что выбрали наш магазин.</p>
         <hr className="my-2" />
-        <p>Заказ {uuid} успешно оформлен и будет доставлен через 5 дней.</p>
+        <p>Заказ # {uuid} успешно оформлен и будет доставлен через 5 дней.</p>
         <p className="lead">
           <Button
             color="primary"
