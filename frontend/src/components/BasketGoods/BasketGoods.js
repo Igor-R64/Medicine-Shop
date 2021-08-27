@@ -12,7 +12,6 @@ function BasketGoods(props) {
 
     const { products, goodsForOrder, addGoodToBasket, deleteGoodFromBasket, setUuid } = props;
 
-
     const [mail, setMail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');

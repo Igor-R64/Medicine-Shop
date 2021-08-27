@@ -6,7 +6,6 @@ import Navigation from '../Navigation';
 import BasketGoods from '../BasketGoods/BasketGoods.js';
 import MainMenu from '../MainMenu';
 import OrderPage from '../OrderPage/Orderpage.js';
-// import Footer from '../Footer/Footer.js';
 import { Container, Col } from 'reactstrap';
 import {
   BrowserRouter as Router,
@@ -19,6 +18,8 @@ function App() {
   const [uuid, setUuid] = useState("");
 
   const [goodsForOrder, updateBasket] = useState([]);
+
+  const [products, setItems] = useState([]);
 
   const clearBasket = () => { updateBasket([]); };
 
@@ -34,16 +35,13 @@ function App() {
     }
   };
 
-  const [products, setItems] = useState([]);
-
+  
   useEffect(() => {
     fetch('/api/goods')
       .then(res => res.json())
       .then((result) => setItems(result))
       .catch((e) => console.log(e))
   }, [])
-
-
 
   return (
     <Router>
@@ -83,7 +81,6 @@ function App() {
           </Col>
         </Container>
       </div>
-      {/* <Footer /> */}
     </Router>
   );
 }
